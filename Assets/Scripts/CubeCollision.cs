@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CubeCollision : MonoBehaviour
 {
-    public GameObject UIPanel;
+
     public GameObject TPPCamera;
     public GameObject FPPCamera;
     public GameObject[] Meterbar;
-    public CupFlipper cupflipper;
-    public GameObject Arrow;
+    public GameObject ColorPanel;
+    public GameObject objectBck;
+    public GameObject ColorObj;
     //public GameObject Strip;
 
     private void OnTriggerEnter(Collider other)
@@ -32,15 +33,9 @@ public class CubeCollision : MonoBehaviour
         LeanTween.rotateLocal(TPPCamera, FPPCamera.gameObject.transform.rotation.eulerAngles, 0.5f);
         TPPCamera.GetComponent<CameraFollow>().enabled = false;
         yield return new WaitForSeconds(0.5f);
-        Arrow.SetActive(true);
-        if (!cupflipper.swipe)
-        {
-            foreach(GameObject go in Meterbar)
-            {
-
-                go.SetActive(true);
-            }
-        }
-        UIPanel.SetActive(true);
+        
+        ColorPanel.SetActive(true);
+        objectBck.SetActive(true);
+        ColorObj.SetActive(true);
     }
 }

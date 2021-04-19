@@ -7,15 +7,21 @@ public class DragandDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBe
 {
     private RectTransform rect;
     public Canvas canvas;
+    public CanvasGroup canvasgroup;
     public GameObject Mask;
 
     private void Awake()
     {
+        
         rect = GetComponent<RectTransform>();
+
+        canvasgroup = rect.gameObject.GetComponent<CanvasGroup>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
         print("begin drag");
+        canvasgroup.alpha = 0.7f;
+        canvasgroup.blocksRaycasts = false;
         rect.localScale = Vector3.one * 1.5f;
     }
 
@@ -29,6 +35,23 @@ public class DragandDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBe
     {
         print("end drag");
         gameObject.transform.parent = Mask.transform;
+        canvasgroup.alpha = 1f;
+        canvasgroup.blocksRaycasts = false;
+        CharacterManager.colorCount++;
+        if (CharacterManager.colorCount == 2)
+        {
+            CharacterManager.next = true;
+        }
+
+        if (CharacterManager.colorCount == 6)
+        {
+            CharacterManager.next = true;
+        }
+
+        if (CharacterManager.colorCount == 10)
+        {
+            CharacterManager.next = true;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

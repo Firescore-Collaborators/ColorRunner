@@ -17,12 +17,16 @@ public class CharacterManager : MonoBehaviour
     public RectTransform[] IconPosition;
     public RectTransform icon;
     public ParticleSystem[] confetti;
-    
 
+    public GameObject ColorPanel;
+
+    public static int colorCount;
     public static int count;
+    public static bool next;
 
     private void Start()
     {
+        colorCount = 0;
         count = 0;
         LeanTween.moveLocal(Player, Positons[count].position,3f);
 
@@ -31,12 +35,11 @@ public class CharacterManager : MonoBehaviour
 
     private void Update()
     {
-   
-
-        if (CupFlipper.run )
+      
+        if(next)
         {
             RightAnswer();
-            CupFlipper.run = false;
+            next = false;
         }
     }
 
@@ -49,10 +52,13 @@ public class CharacterManager : MonoBehaviour
 
     IEnumerator Right()
     {
-
+        yield return new WaitForSeconds(1f);
+        ColorPanel.SetActive(false);
+        LeanTween.moveLocal(TPPCamera, TppCamPos.position, 0.5f);
+        LeanTween.rotateLocal(TPPCamera, TppCamPos.rotation.eulerAngles, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         ConfettiPlay();
         CorrectText.SetTrigger("text");
-
         TPPCamera.GetComponent<CameraFollow>().enabled = true;
         yield return new WaitForSeconds(1f);
         Strip.SetActive(true);
