@@ -11,9 +11,7 @@ public class AIManager : MonoBehaviour
 
     public GameObject TableBroken;
     public GameObject[] Table;
-    public GameObject[] Cups;
     Animator animator;
-    public Animator cups;
 
     private void Awake()
     {
@@ -45,11 +43,7 @@ public class AIManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         animator.SetTrigger("idle");
         yield return new WaitForSeconds(Random.Range(9f,12f));
-        cups.enabled = false;
-        foreach(GameObject go in Cups)
-        {
-            go.GetComponent<Rigidbody>().isKinematic = false;
-        }
+       
         Instantiate(TableBroken, Table[count].transform.position, Table[count].transform.rotation);
         Table[count].SetActive(false);
         count++;

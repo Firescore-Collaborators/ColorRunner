@@ -20,6 +20,8 @@ public class CharacterManager : MonoBehaviour
 
     public GameObject ColorPanel;
 
+    public Slider ProgressBar;
+
     public static int colorCount;
     public static int count;
     public static bool next;
@@ -41,6 +43,7 @@ public class CharacterManager : MonoBehaviour
             RightAnswer();
             next = false;
         }
+        ProgressBar.value = colorCount;
     }
 
     public void RightAnswer()
@@ -53,6 +56,7 @@ public class CharacterManager : MonoBehaviour
     IEnumerator Right()
     {
         yield return new WaitForSeconds(1f);
+        ProgressBar.gameObject.SetActive(false);
         ColorPanel.SetActive(false);
         LeanTween.moveLocal(TPPCamera, TppCamPos.position, 0.5f);
         LeanTween.rotateLocal(TPPCamera, TppCamPos.rotation.eulerAngles, 0.5f);
@@ -65,7 +69,8 @@ public class CharacterManager : MonoBehaviour
         Player.GetComponent<Animator>().SetTrigger("run");
         LeanTween.moveLocal(Player, Positons[++count].position, 3f);
         LeanTween.moveX(icon, IconPosition[count].anchoredPosition.x, 3f);
-
+        ProgressBar.minValue = colorCount;
+        ProgressBar.maxValue = colorCount + 4;
     }
 
     public void ConfettiPlay()
