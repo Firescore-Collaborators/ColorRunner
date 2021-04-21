@@ -14,6 +14,7 @@ public class CharacterManager : MonoBehaviour
     public Animator CorrectText;
     public Animator WrongText;
 
+    public GameObject[] Table;
     public RectTransform[] IconPosition;
     public RectTransform icon;
     public ParticleSystem[] confetti;
@@ -22,6 +23,7 @@ public class CharacterManager : MonoBehaviour
 
     public Slider ProgressBar;
 
+    public GameObject BrokenWall;
     public static int colorCount;
     public static int count;
     public static bool next;
@@ -61,6 +63,10 @@ public class CharacterManager : MonoBehaviour
         LeanTween.moveLocal(TPPCamera, TppCamPos.position, 0.5f);
         LeanTween.rotateLocal(TPPCamera, TppCamPos.rotation.eulerAngles, 0.5f);
         yield return new WaitForSeconds(0.5f);
+        Player.GetComponent<Animator>().SetTrigger("boxing");
+        yield return new WaitForSeconds(0.8f);
+        Instantiate(BrokenWall, Table[count].transform.position, Table[count].transform.rotation);
+        Table[count].SetActive(false);
         ConfettiPlay();
         CorrectText.SetTrigger("text");
         TPPCamera.GetComponent<CameraFollow>().enabled = true;

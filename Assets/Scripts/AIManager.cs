@@ -31,7 +31,7 @@ public class AIManager : MonoBehaviour
        
         yield return new WaitForSeconds(3f);
         animator.SetTrigger("idle");
-        yield return new WaitForSeconds(Random.Range(9f,12f));
+        yield return new WaitForSeconds(Random.Range(6f,9f));
         Instantiate(TableBroken, Table[count].transform.position, Table[count].transform.rotation);
         Table[count].SetActive(false);
         count++;
@@ -42,7 +42,7 @@ public class AIManager : MonoBehaviour
         LeanTween.moveX(icon, IconPosition[count].anchoredPosition.x, 3f);
         yield return new WaitForSeconds(3f);
         animator.SetTrigger("idle");
-        yield return new WaitForSeconds(Random.Range(9f,12f));
+        yield return new WaitForSeconds(Random.Range(6f,9f));
        
         Instantiate(TableBroken, Table[count].transform.position, Table[count].transform.rotation);
         Table[count].SetActive(false);
@@ -54,13 +54,7 @@ public class AIManager : MonoBehaviour
         LeanTween.moveX(icon, IconPosition[count].anchoredPosition.x, 3f);
         yield return new WaitForSeconds(3f);
         animator.SetTrigger("idle");
-        yield return new WaitForSeconds(Random.Range(9f,12f));
-        Instantiate(TableBroken, Table[count].transform.position, Table[count].transform.rotation);
-        Table[count].SetActive(false);
-        count++;
-        yield return new WaitForSeconds(1f);
-        animator.SetTrigger("run");
-
+        yield return new WaitForSeconds(Random.Range(6f,9f));
         
     }
 }
