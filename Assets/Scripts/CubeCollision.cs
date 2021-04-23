@@ -16,6 +16,7 @@ public class CubeCollision : MonoBehaviour
     public GameObject ColorSun;
     public GameObject CastleObj;
     public GameObject CastleSun;
+    public GameObject PreviewSun;
     public Slider ProgressBar;
     //public GameObject Strip;
 
@@ -37,9 +38,13 @@ public class CubeCollision : MonoBehaviour
         LeanTween.rotateLocal(TPPCamera, FPPCamera.gameObject.transform.rotation.eulerAngles, 0.5f);
         TPPCamera.GetComponent<CameraFollow>().enabled = false;
         yield return new WaitForSeconds(0.5f);
-        
+        PreviewSun.SetActive(true);
 
-        if(CharacterManager.colorCount == 2)
+        ColorPanel.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        PreviewSun.SetActive(false);
+
+        if (CharacterManager.colorCount == 2)
         {
             SunObj.SetActive(false);
             ColorSun.SetActive(false);
@@ -50,10 +55,8 @@ public class CubeCollision : MonoBehaviour
             CastleObj.SetActive(false);
             CastleSun.SetActive(false);
         }
-        ColorPanel.SetActive(true);
-        objectBck.SetActive(true);
         ColorObj.SetActive(true);
+        objectBck.SetActive(true);
         ProgressBar.gameObject.SetActive(true);
-
     }
 }
