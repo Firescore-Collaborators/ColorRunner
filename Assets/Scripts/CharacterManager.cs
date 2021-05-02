@@ -76,7 +76,7 @@ public class CharacterManager : MonoBehaviour
         LeanTween.moveLocal(Player, Positons[++count].position, 3f);
         LeanTween.moveX(icon, IconPosition[count].anchoredPosition.x, 3f);
         ProgressBar.minValue = colorCount;
-        ProgressBar.maxValue = colorCount + 4;
+        ProgressBar.maxValue = colorCount + 5;
     }
 
     public void ConfettiPlay()

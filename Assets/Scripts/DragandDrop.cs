@@ -38,17 +38,17 @@ public class DragandDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBe
         canvasgroup.alpha = 1f;
         canvasgroup.blocksRaycasts = false;
         CharacterManager.colorCount++;
-        if (CharacterManager.colorCount == 2)
-        {
-            CharacterManager.next = true;
-        }
-
-        if (CharacterManager.colorCount == 6)
+        if (CharacterManager.colorCount == 5)
         {
             CharacterManager.next = true;
         }
 
         if (CharacterManager.colorCount == 10)
+        {
+            CharacterManager.next = true;
+        }
+
+        if (CharacterManager.colorCount == 15)
         {
             CharacterManager.next = true;
         }
