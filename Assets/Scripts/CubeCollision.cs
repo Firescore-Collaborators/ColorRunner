@@ -12,9 +12,7 @@ public class CubeCollision : MonoBehaviour
     public GameObject ColorPanel;
     public GameObject objectBck;
     public GameObject ColorObj;
-    public GameObject SunObj;
     public GameObject ColorSun;
-    public GameObject CastleObj;
     public GameObject CastleSun;
     public GameObject PreviewSun;
     public GameObject PreviewButterfly;
@@ -32,15 +30,13 @@ public class CubeCollision : MonoBehaviour
 
     IEnumerator collionDetect(Collider other)
     {
-        if (CharacterManager.colorCount == 5)
+        if (CharacterManager.colorCount == 8)
         {
-            SunObj.SetActive(false);
             ColorSun.SetActive(false);
         }
 
-        if (CharacterManager.colorCount == 10)
+        if (CharacterManager.colorCount == 12)
         {
-            CastleObj.SetActive(false);
             CastleSun.SetActive(false);
         }
         // Strip.SetActive(false);
@@ -51,19 +47,19 @@ public class CubeCollision : MonoBehaviour
         TPPCamera.GetComponent<CameraFollow>().enabled = false;
         yield return new WaitForSeconds(0.5f);
         
-        if (CharacterManager.colorCount < 5)
+        if (CharacterManager.colorCount < 8)
         {
             PreviewSun.SetActive(true);
         }
 
-        if (CharacterManager.colorCount == 5 && CharacterManager.colorCount < 10)
+        if (CharacterManager.colorCount == 8 && CharacterManager.colorCount < 12)
         {
             PreviewSun.SetActive(false);
             PreviewCastle.SetActive(true);
 
         }
 
-        if (CharacterManager.colorCount == 10)
+        if (CharacterManager.colorCount == 12)
         {
             PreviewCastle.SetActive(false);
             PreviewButterfly.SetActive(true);
@@ -79,7 +75,7 @@ public class CubeCollision : MonoBehaviour
 
        
         ColorObj.SetActive(true);
-        objectBck.SetActive(true);
+
         ProgressBar.gameObject.SetActive(true);
     }
 }
