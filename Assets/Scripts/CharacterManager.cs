@@ -75,8 +75,18 @@ public class CharacterManager : MonoBehaviour
         Player.GetComponent<Animator>().SetTrigger("run");
         LeanTween.moveLocal(Player, Positons[++count].position, 3f);
         LeanTween.moveX(icon, IconPosition[count].anchoredPosition.x, 3f);
-        ProgressBar.minValue = colorCount;
-        ProgressBar.maxValue = colorCount + 4;
+        if(colorCount < 10)
+        {
+            ProgressBar.minValue = colorCount;
+            ProgressBar.maxValue = colorCount + 4;
+        }
+
+        if(colorCount>=10)
+        {
+            ProgressBar.minValue = colorCount;
+            ProgressBar.maxValue = colorCount + 3;
+        }
+
     }
 
     public void ConfettiPlay()

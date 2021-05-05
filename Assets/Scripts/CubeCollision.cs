@@ -30,12 +30,12 @@ public class CubeCollision : MonoBehaviour
 
     IEnumerator collionDetect(Collider other)
     {
-        if (CharacterManager.colorCount == 8)
+        if (CharacterManager.colorCount == 6)
         {
             ColorSun.SetActive(false);
         }
 
-        if (CharacterManager.colorCount == 12)
+        if (CharacterManager.colorCount == 10)
         {
             CastleSun.SetActive(false);
         }
@@ -46,34 +46,31 @@ public class CubeCollision : MonoBehaviour
         LeanTween.rotateLocal(TPPCamera, FPPCamera.gameObject.transform.rotation.eulerAngles, 0.5f);
         TPPCamera.GetComponent<CameraFollow>().enabled = false;
         yield return new WaitForSeconds(0.5f);
-        
-        if (CharacterManager.colorCount < 8)
+        objectBck.SetActive(true);
+        if (CharacterManager.colorCount < 6)
         {
             PreviewSun.SetActive(true);
         }
 
-        if (CharacterManager.colorCount == 8 && CharacterManager.colorCount < 12)
+        if (CharacterManager.colorCount == 6 && CharacterManager.colorCount < 10)
         {
             PreviewSun.SetActive(false);
             PreviewCastle.SetActive(true);
 
         }
 
-        if (CharacterManager.colorCount == 12)
+        if (CharacterManager.colorCount == 10)
         {
             PreviewCastle.SetActive(false);
             PreviewButterfly.SetActive(true);
         }
-        
-        
-        
+                
         ColorPanel.SetActive(true);
         yield return new WaitForSeconds(3f);
         PreviewSun.SetActive(false);
         PreviewCastle.SetActive(false);
         PreviewButterfly.SetActive(false);
 
-       
         ColorObj.SetActive(true);
 
         ProgressBar.gameObject.SetActive(true);
