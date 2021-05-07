@@ -28,6 +28,11 @@ public class CharacterManager : MonoBehaviour
     public static int count;
     public static bool next;
 
+    public Animator SunAnim;
+    public Animator FruitAnim;
+    public Animator WindAnim;
+
+
     private void Start()
     {
         colorCount = 0;
@@ -57,7 +62,30 @@ public class CharacterManager : MonoBehaviour
 
     IEnumerator Right()
     {
-        yield return new WaitForSeconds(1f);
+        if (colorCount == 5)
+        {
+            SunAnim.gameObject.SetActive(true);
+            SunAnim.enabled = true;
+        }
+
+        if (colorCount == 9)
+        {
+            FruitAnim.gameObject.SetActive(true);
+            FruitAnim.enabled = true;
+        }
+
+        if (colorCount == 12)
+        {
+            WindAnim.gameObject.SetActive(true);
+            WindAnim.enabled = true;
+        }
+
+        yield return new WaitForSeconds(3f);
+        SunAnim.gameObject.SetActive(false);
+        FruitAnim.gameObject.SetActive(false);
+        WindAnim.gameObject.SetActive(false);
+
+        
         ProgressBar.gameObject.SetActive(false);
         ColorPanel.SetActive(false);
         LeanTween.moveLocal(TPPCamera, TppCamPos.position, 0.5f);
