@@ -93,7 +93,7 @@ public class CharacterManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Player.GetComponent<Animator>().SetTrigger("boxing");
         yield return new WaitForSeconds(0.8f);
-        Instantiate(BrokenWall, Table[count].transform.position, Table[count].transform.rotation);
+        Instantiate(BrokenWall, Table[count].transform.position, BrokenWall.transform.rotation);
         Table[count].SetActive(false);
         ConfettiPlay();
         CorrectText.SetTrigger("text");
