@@ -32,6 +32,9 @@ public class CharacterManager : MonoBehaviour
     public Animator FruitAnim;
     public Animator WindAnim;
 
+    public GameObject sun;
+    public GameObject fruit;
+    public GameObject windmill;
 
     private void Start()
     {
@@ -62,6 +65,9 @@ public class CharacterManager : MonoBehaviour
 
     IEnumerator Right()
     {
+        sun.SetActive(false);
+        fruit.SetActive(false);
+        windmill.SetActive(false);
         if (colorCount == 5)
         {
             SunAnim.gameObject.SetActive(true);
